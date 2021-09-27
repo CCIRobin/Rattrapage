@@ -33,7 +33,7 @@ app.get('/', (req, res) => {
 });
 
 app.get("/users", (req, res) => {
-  User.find().then((user) => {
+  User.find().limit(2).then((user) => {
       console.log('Users : ', user)
       res.json(user);
   }).catch((err) => {
