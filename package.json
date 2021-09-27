@@ -1,0 +1,28 @@
+{
+  "name": "rattrapage",
+  "version": "1.0.0",
+  "description": "Rattrapage projet",
+  "main": "userService.js",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "jest": "^27.2.2",
+    "mongodb": "^4.1.0",
+    "mongoose": "^5.13.8"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/r_scls/rattrapage.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/r_scls/rattrapage/issues"
+  },
+  "homepage": "https://gitlab.com/r_scls/rattrapage#readme"
+}
