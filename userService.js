@@ -6,19 +6,16 @@ app.use(cors())
 app.use(bodyParser.json());
 
 
-const uri = "mongodb+srv://test:test@gestionutilisateur.idqh0.mongodb.net/GestionUtilisateur?retryWrites=true&w=majority";
+
+
+const uri = "mongodb+srv://test:test@gestionutilisateur.idqh0.mongodb.net/GestionUtilisateur";
 
 
 //Load mongoose
 const mongoose = require("mongoose");
 
-const Users = mongoose.model('User', mongoose.Schema({
-    id: String,
-    nom: String,
-    prenom: String,
-    age: String
-  }));
-
+require("./userModele");
+const Customer = mongoose.model("User");
 
 
 mongoose.connect(uri, {
@@ -35,23 +32,19 @@ mongoose.connect(uri, {
     });
 
 app.get('/', (req, res) => {
-    res.send("Bonjour")
+    res.send("Bonjour tout est ok")
 });
 
 
 
-app.get("/lastusers",  (req, res) => {
-  /*  Customer.find().then((customers) => {
-        console.log(customers)
+app.get("/lastusers", (req, res) => {
+    Customer.find().limit(3).then((customers) => {
         res.json(customers);
     }).catch((err) => {
         if (err) {
             throw err;
         }
-    });*/
-    let toto =  Users.find()
-    console.log(toto)
-    res.json(toto)
+    });
 });
 
 
