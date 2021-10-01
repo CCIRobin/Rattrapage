@@ -11,7 +11,7 @@ const mongoose = require("mongoose");
 
 const User = mongoose.model("User");
 
-const uri = "mongodb+srv://test:test@gestionutilisateur.idqh0.mongodb.net/test";
+const uri = "mongodb+srv://test:test@gestionutilisateur.idqh0.mongodb.net/GestionUtilisateur";
 
 
 
