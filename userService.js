@@ -6,9 +6,7 @@ app.use(cors())
 app.use(bodyParser.json());
 
 
-const mongoose = require("mongoose");
 
-const User = mongoose.model("User");
 
 const uri = "mongodb+srv://test:test@gestionutilisateur.idqh0.mongodb.net/GestionUtilisateur";
 
