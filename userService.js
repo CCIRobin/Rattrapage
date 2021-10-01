@@ -5,7 +5,9 @@ const cors = require('cors')
 app.use(cors())
 app.use(bodyParser.json());
 
+
 const uri = "mongodb+srv://test:test@gestionutilisateur.idqh0.mongodb.net/GestionUtilisateur?retryWrites=true&w=majority";
+
 
 //Load mongoose
 const mongoose = require("mongoose");

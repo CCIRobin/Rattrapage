@@ -67,3 +67,33 @@ jobs:
         push: true
         tags: '${{ steps.meta.outputs.tags }}${{ github.run.id }}'
         labels: ${{ steps.meta.outputs.labels }}
+        
+  deploy_main:
+    name: deploy main
+    runs-on: ubuntu-latest
+    needs: push_to_registry
+    if: ${{ github.ref == 'refs/heads/main' }}
+    steps:
+    - name: executing remote ssh commands using password
+      uses: appleboy/ssh-action@master
+      with:
+        host: 51.103.39.126
+        username: robin
+        password: robinrobin
+        port: 22
+        script: sudo sh prod.sh
+
+  deploy_stage:
+    name: deploy stage
+    runs-on: ubuntu-latest
+    needs: push_to_registry
+    if: ${{ github.ref == 'refs/heads/Stage' }}
+    steps:
+    - name: executing remote ssh commands using password
+      uses: appleboy/ssh-action@master
+      with:
+        host: 51.103.39.126
+        username: robin
+        password: robinrobin
+        port: 22
+        script: sudo sh recette.sh
