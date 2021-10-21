@@ -11,8 +11,7 @@
     "jest": "^27.2.2",
     "mongodb": "^4.1.0",
     "mongoose": "^5.13.8"
-  }
-,
+  },
   "scripts": {
     "test": "jest"
   },
