@@ -17,4 +17,4 @@ mongoose.model("User", {
         type: String,
         require: false
     }
-})
+}, 'User')

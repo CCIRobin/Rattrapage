@@ -1,53 +1,51 @@
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
-const cors = require('cors')
+const cors = require('cors');
+require("./userModele");
+
 app.use(cors())
 app.use(bodyParser.json());
 
-
-
-
-const uri = "mongodb+srv://test:test@gestionutilisateur.idqh0.mongodb.net/GestionUtilisateur";
-
-
-//Load mongoose
 const mongoose = require("mongoose");
 
-require("./userModele");
-const Customer = mongoose.model("User");
+const User = mongoose.model("User");
 
+const uri = "mongodb+srv://test:test@cesi.idqh0.mongodb.net/Users";
+//const uri = "mongodb://vincent:zeldri@127.0.0.1/test?authSource=admin"; // J'ai juste modifier pour ma BDD
+
+
+
+app.get('/', (req, res) => {
+  res.send("tout est ok")
+});
+
+app.get("/users", (req, res) => {
+  User.find().then((user) => {
+      console.log('Users : ', user)
+      res.json(user);
+  }).catch((err) => {
+      if (err) {
+          throw err;
+      }
+  });
+});
 
 mongoose.connect(uri, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false,
-    useCreateIndex: true}).then(() => {
-    console.log("Connexion à la base ok");
-})
-    .catch((error) => {
-        console.log("Connexion à la base échoué");
-        console.error(error);
-        process.exit(1);
+    useCreateIndex: true
+  })
+  .then(() => {
+    console.log("Connexion à la base réussie");
+    app.listen(3000, () => {
+      console.log("Cela fonctionne");
     });
+  })
+.catch((error) => {
+      console.log("Connexion à la base echouée");
+      console.error(error);
+      process.exit(1);
+  })
 
-app.get('/', (req, res) => {
-    res.send("Bonjour tout est ok")
-});
-
-
-
-app.get("/lastusers", (req, res) => {
-    Customer.find().limit(3).then((customers) => {
-        res.json(customers);
-    }).catch((err) => {
-        if (err) {
-            throw err;
-        }
-    });
-});
-
-
-app.listen(3000, () => {
-    console.log("tout est ok");
-});
