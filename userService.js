@@ -12,12 +12,12 @@ const mongoose = require("mongoose");
 const User = mongoose.model("User");
 
 const uri = "mongodb+srv://test:test@cesi.idqh0.mongodb.net/Users";
-//const uri = "mongodb://vincent:zeldri@127.0.0.1/test?authSource=admin"; // J'ai juste modifier pour ma BDD
+
 
 
 
 app.get('/', (req, res) => {
-  res.send("tout est ok")
+  res.send("Hello")
 });
 
 app.get("/users", (req, res) => {
