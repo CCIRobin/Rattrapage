@@ -11,25 +11,13 @@ const mongoose = require("mongoose");
 
 const User = mongoose.model("User");
 
-const uri = "mongodb+srv://test:test@gestionutilisateur.idqh0.mongodb.net/test";
+const uri = "mongodb+srv://test:test@cesi.idqh0.mongodb.net/Users";
 
 
 
-mongoose.connect(uri, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  useFindAndModify: false,
-  useCreateIndex: true}).then(() => {
-  console.log("Connexion à la base réussie");
-})
-  .catch((error) => {
-      console.log("Connexion à la base echouée");
-      console.error(error);
-      process.exit(1);
-  });
 
 app.get('/', (req, res) => {
-  res.send("tout est ok")
+  res.send("Hello")
 });
 
 app.get("/users", (req, res) => {
@@ -43,8 +31,21 @@ app.get("/users", (req, res) => {
   });
 });
 
-app.listen(3000, () => {
-  console.log("Cela fonctionne");
-});
-
+mongoose.connect(uri, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useFindAndModify: false,
+    useCreateIndex: true
+  })
+  .then(() => {
+    console.log("Connexion à la base réussie");
+    app.listen(3000, () => {
+      console.log("Cela fonctionne");
+    });
+  })
+.catch((error) => {
+      console.log("Connexion à la base echouée");
+      console.error(error);
+      process.exit(1);
+  })
 
