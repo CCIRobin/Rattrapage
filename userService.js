@@ -17,7 +17,7 @@ const uri = "mongodb+srv://test:test@cesi.idqh0.mongodb.net/Users";
 
 
 app.get('/', (req, res) => {
-  res.send("Hello")
+  res.send("Hello tout le monde")
 });
 
 app.get("/users", (req, res) => {
