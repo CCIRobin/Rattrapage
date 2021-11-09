@@ -17,7 +17,7 @@ const uri = "mongodb://admin:root@mongo/test?authSource=admin";
 
 
 app.get('/', (req, res) => {
-  res.send("Hello tout le monde")
+  res.send("Hello tout le monde !")
 });
 
 app.get("/users", (req, res) => {
